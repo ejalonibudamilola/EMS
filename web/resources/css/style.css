@@ -1,0 +1,183 @@
+      html,
+      body,
+      header,
+      .carousel {
+        height: 80vh;
+      }
+
+      @media (max-width: 740px) {
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+
+      @media (min-width: 800px) and (max-width: 850px) {
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+.view,body,html{height:110%}@media (max-width:740px){.full-page-intro{height:1000px}}.carousel{height:50%}.carousel .carousel-inner,.carousel .carousel-inner .active,.carousel .carousel-inner .carousel-item{height:100%}@media (max-width:776px){.carousel{height:100%}}.navbar{background-color:rgba(0,0,0,.3)}.page-footer,.top-nav-collapse{background-color:#1C2331}@media only screen and (max-width:768px){.navbar{background-color:#1C2331}}
+
+@media (max-width: 776px){
+    .carousel {
+    height: 50% !important;
+    }
+    .ctext h1{
+    font-size:30px;        
+    }
+    .ctext p{
+        font-size:15px;
+    }
+    .top h1{
+        font-size:30px!important;
+    }
+}
+
+
+.btn-outline-white{
+    border-color: #f7e4dd !important;
+    border-radius: 10px;
+}
+
+.btn-outline-white :hover{
+    border-color: #795548 !important;
+    border-radius: 10px;
+} 
+
+.features{
+    background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../img/officehour.jpg");
+  background-size: cover;
+  height: 110vh;
+  position: relative
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+              .features{
+    background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../img/officehour.jpg");
+  background-size: cover;
+  height: 120vh;
+  position: relative
+}
+    }
+          
+     @media (min-width: 496px) and (max-width: 767px){
+       .features{
+    background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../img/officehour.jpg");
+  background-size: cover;
+  height: 180vh;
+  position: relative
+}
+
+/*.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}*/
+      }  
+     
+      @media (min-width: 389px) and (max-width: 495px) {
+       .features{
+    background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../img/officehour.jpg");
+  background-size: cover;
+  height: 200vh;
+  position: relative
+}
+      } 
+      
+          @media (max-width: 386px) {
+       .features{
+    background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../img/officehour.jpg");
+  background-size: cover;
+  height: 250vh;
+  position: relative
+}
+      }
+      
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+
+.cfooter{
+    padding: 3% 10% 0 10%
+}
+
+.cfooter p a {
+    color: #ed9323!important
+}
+
+.bfooter{
+    padding:0 0 0 15%
+}
+
+.btn-amber{
+    background-color: #1c2631!important
+}
+.modal-header{
+    background-color: #78909c !important;
+    text-align: center !important
+}
+.loginform{
+    padding-top: 5%;
+}
+
+.whole{
+    margin: 0 5% 0 5%;
+}
+
+.top{
+    height: 40vh;
+    margin: 0 3% 0 1%
+}
+
+.error{
+    color:red;
+    text-align: center;
+}
+
+.spc{
+  background-color: #879ca7 !important;  
+}
