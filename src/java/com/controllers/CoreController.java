@@ -752,12 +752,22 @@ public class CoreController {
         String search_string = request.getParameter("search_string");
         System.out.println("Searched by is " +search_by);
         System.out.println("Searched string is " +search_string);
-        List<Users> admin = usermanagement.searchAdmin(search_by, search_string);
-        model.addObject("admin",admin);
+        List<Users> admins = usermanagement.searchAdmin(search_by, search_string, "");
+        int total = admins.size();
+        String link = "/EMS/searchAdmin" +"?page_num=";
+        Pagination pg = new Pagination(page_num, total);
+        String limit = pg.getLimit();
+        List<Users> admin = usermanagement.searchAdmin(search_by, search_string, limit);
+        pg.setLink(link);
+        String pages = pg.getControls();
+        int number = admin.size();
+        System.out.println("The List returned form database is "+number);
+        model.addObject("pagination", pages);
         model.addObject("page_num",page_num);
+        model.addObject("admin",admin);
         model.setViewName("adminList2");
         return model;
-    }
+    }    
     
     @RequestMapping(value="/leaverequestmanagement", method={RequestMethod.GET})
     public ModelAndView leaveRequestManagement(HttpServletRequest request, HttpServletResponse response,  @RequestParam(defaultValue = "1") int page_num){
@@ -1060,6 +1070,51 @@ public class CoreController {
         return model;
     }
     
+         @RequestMapping(value="/searchDept", method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView searchDept(HttpServletRequest request, HttpServletResponse response, 
+            @RequestParam(defaultValue = "1") int page_num, @RequestParam String search_by, @RequestParam String search_string){
+        ModelAndView model = new ModelAndView();
+//        String search_by = request.getParameter("search_by");
+//        String search_string = request.getParameter("search_string");
+        System.out.println("Searched by is " +search_by);
+        System.out.println("Searched string is " +search_string);
+        List<Department> depts = projectmanagement.searchDept(search_by, search_string, "");
+        int total = depts.size();
+        String link = "/EMS/searchDept" +"?search_by="+search_by+"&search_string="+search_string+"&page_num=";
+//        String link = "/TAMS/searchtransactions" + "?table_name="+table_name+"&search_by="+search_by+"&search_string="+search_string+"&page_num="; 
+        Pagination pg = new Pagination(page_num, total);
+        String limit = pg.getLimit();
+        List<Department> dept = projectmanagement.searchDept(search_by, search_string, limit);
+        pg.setLink(link);
+        String pages = pg.getControls();
+        int number = dept.size();
+        System.out.println("The List returned form database is "+number);
+        model.addObject("pagination", pages);
+        model.addObject("page_num",page_num);
+        model.addObject("dept", dept);
+        model.setViewName("department2");
+        return model;
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/deleteDept", method = {RequestMethod.POST})
+    public String deleteDept(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        String message = "Failed";
+        String getFilesArray = request.getParameter("array");
+
+        String myArray[] = getFilesArray.split(",");
+
+        int delete[] = projectmanagement.deleteDept(myArray);
+        System.out.println("deleting returns:" + delete.length);
+
+        if (delete.length > 0) {
+            message = "Successful";
+            
+        }
+        System.out.println(message);
+        return message;
+    }
+    
     
      @RequestMapping(value="/adminmanagement", method={RequestMethod.GET,RequestMethod.POST})
     public ModelAndView adminManagement(HttpServletRequest request, HttpServletResponse response, @RequestParam(defaultValue = "1") int page_num){
@@ -1254,7 +1309,45 @@ public class CoreController {
         return message;
     }
     
-     
+          @ResponseBody
+    @RequestMapping(value = "/deleteadminLeave", method = {RequestMethod.POST})
+    public String deleteadminLeave(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        String message = "Failed";
+        String getFilesArray = request.getParameter("array");
+
+        String myArray[] = getFilesArray.split(",");
+
+        int delete[] = leavemanagement.deleteLeave(myArray);
+        System.out.println("deleting returns:" + delete.length);
+
+        if (delete.length > 0) {
+            message = "Successful";
+            
+        }
+        System.out.println(message);
+        return message;
+    }
+    
+     @ResponseBody
+    @RequestMapping(value = "/deleteadminLoan", method = {RequestMethod.POST})
+    public String deleteadminLoan(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        String message = "Failed";
+        String getFilesArray = request.getParameter("array");
+
+        String myArray[] = getFilesArray.split(",");
+
+        int delete[] = loanmanagement.deleteLoan(myArray);
+        System.out.println("deleting returns:" + delete.length);
+
+        if (delete.length > 0) {
+            message = "Successful";
+            
+        }
+        System.out.println(message);
+        return message;
+    }
+    
+    
     @RequestMapping(value="/queryandinquiry", method={RequestMethod.GET,RequestMethod.POST})
     public ModelAndView queryAndInquiry(HttpServletRequest request, HttpServletResponse response, @RequestParam(defaultValue = "1") int page_num){
         ModelAndView model = new ModelAndView();

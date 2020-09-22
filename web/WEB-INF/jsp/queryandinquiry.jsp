@@ -20,7 +20,6 @@
             <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#modalDel"> -Delete </button>
          </div>        
          <div class="col-md-8">
-             ${query}
                 <form name="queryandinquiry" action="queryandinquiryAction" method="post">
                     <span id="cpass" style="color:red;"></span>
                     <div class="input-group mb-3">
@@ -56,8 +55,9 @@
                                     <th>Staff Department</th>
                                     <th>Staff Username</th>
                                     <th>Query/Inquiry</th>
-                                    <th>Attachment</th>
+                                    <th>Attachment</th>                                    
                                     <th>Date Sent</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,24 +73,24 @@
                     <td>${query.firstname}</td>
                     <td>${query.dept}</td>
                     <td>${query.username}</td>
-                    <td>${query.query}</td>
+                    <td>${query.query}</td> 
                     <c:set var="qLength" value="${query.filename}"/>
                     <c:choose>
-                        <c:when test="${qLength.length() < 1}">
+                        <%--<c:when test="${qLength.length() < 1}">--%>
+                        <c:when test="${qLength=='null'}">
                             <td>No File Attached</td>
                         </c:when>
                         <c:otherwise>
                             <td><a href="<spring:url value="/queryAndAssessment/${query.filename}"/>"><button type="button" class="btn btn-primary">Attached File</button></a></td>
                         </c:otherwise>
-                    </c:choose>
-                    <td>${query.datesent}</td>                    
+                    </c:choose> 
+                    <td>${query.datesent}</td>
                 </tr>
-                </c:forEach>
-                        
-                            </tbody>
-                        </table>
+                </c:forEach>                        
+                </tbody>
+                </table>
                 <div class="col-md-12 my-3">${pagination}</div>
-                    </div>
+            </div>
                     
  <div class="modal fade" id="modalDel" tabindex="-1" role="dialog" data-backdrop="true" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

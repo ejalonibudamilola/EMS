@@ -1,8 +1,9 @@
 <%-- 
-    Document   : department
-    Created on : Apr 23, 2020, 6:29:45 PM
-    Author     : franc
+    Document   : department2
+    Created on : Aug 22, 2020, 5:33:29 PM
+    Author     : user
 --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
     <div class="modal-body">
           <div class="row">
          <div class="col-md-4">
-            <a href="adddept" class="btn btn-primary link">Add</a>
+            <a href="department" class="btn btn-primary link">Back</a>
 <!--            <a href="" data-toggle="modal" data-target="#modalDel"><button class="btn btn-danger" type="submit"> -Delete </button></a>-->
             <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#modalDel"> -Delete </button>
          </div>        
@@ -87,5 +88,6 @@
                     
                     
                     
+
 
 

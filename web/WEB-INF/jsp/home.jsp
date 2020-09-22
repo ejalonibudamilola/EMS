@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="<spring:url value="/resources/css/mdb.min.css"/>"/>
          <!-- Your custom styles (optional) -->
         <link rel="stylesheet" href="<spring:url value="/resources/css/style.css"/>"/>
-        <link rel="icon" href="<spring:url value="/resources/img/supersoftLogo.png"/>" type="image/png"/> 
+        <link rel="icon" href="<spring:url value="/resources/img/emslogo.ico"/>" type="image/png"/>
         <link rel="stylesheet" href="<spring:url value="/resources/css/flatpickr.min.css"/>"/>        
         <script src="<spring:url value="/resources/js/jquery.js"/>"></script>
         <script src="<spring:url value="/resources/js/popper.min.js"/>"></script>
@@ -747,6 +747,146 @@
                     });
                 }               
             });
+            
+            $(document).on('click', '#searchDept', function(e){
+            e.preventDefault();
+            var eq ="They are equal";
+            var deq="They are not equal";
+            var p="Choose...";
+            var s = document.getElementById('search_by').value;
+            var ss = document.getElementById('search_string').value;
+            console.log(p);
+            console.log(s);
+            console.log(ss);
+            if((p===s)||(ss==="")){
+                console.log(eq);
+                document.getElementById("cpass").innerHTML="Select a means to Search by";
+            }
+            else{
+                console.log(deq);
+                $('#main').html(spinner);
+                var form = $(this).closest('form');
+                var data = form.serialize();
+                var url = form.attr('action');
+                $.get(url, data, function (result) {
+                    $('#main').html(result);
+                    console.log(url);
+                    console.log(result);
+                });
+            }
+            
+    });  
+    
+         var deptArray = [];
+            $(document).on('click', '#deleteDept', function () {
+//                $('#modalDel').modal('hide');
+//                $('#modalDel').removeClass('fade');
+                  $('.modal-backdrop').remove();
+                var url = "${pageContext.request.contextPath}/deleteDept";
+                console.log("Dept deletion going on");
+                var data = deptArray.join(",");
+                console.log(data);
+                $.post(url, {array: data}, function (result) {
+                    if (result === "Successful") {
+                        console.log("Deletion was successful");
+                        alert("Deleted successfully");
+                        $('#main').html(spinner);
+                        var url = "department";
+                        $.get(url, function (result) {
+                            $('#main').html(result);
+                        });
+                        console.log(result);
+                    }
+                });
+            });
+            
+              $(document).on('change', '.deptBox', function () {
+                var chk = $(this);
+                var id = chk.next().val();
+                if (chk.prop("checked")) {
+                    deptArray.push(id);
+                } else {
+                    if (deptArray.indexOf(id) > -1) {
+                        var i = deptArray.indexOf(id);
+                        deptArray.splice(i, 1);
+                    }
+                }
+            });
+            
+            
+            var adminLeaveArray = [];
+            $(document).on('click', '#deleteadminLeave', function () {
+//                $('#modalDel').modal('hide');
+//                $('#modalDel').removeClass('fade');
+                  $('.modal-backdrop').remove();
+                var url = "${pageContext.request.contextPath}/deleteadminLeave";
+                console.log("admin leave deletion going on");
+                var data = adminLeaveArray.join(",");
+                console.log(data);
+                $.post(url, {array: data}, function (result) {
+                    if (result === "Successful") {
+                        console.log("Deletion was successful");
+                        alert("Deleted successfully");
+                        $('#main').html(spinner);
+                        var url = "adminleavemanagement";
+                        $.get(url, function (result) {
+                            $('#main').html(result);
+                        });
+                        console.log(result);
+                    }
+                });
+            });
+            
+              $(document).on('change', '.adminLeaveBox', function () {
+                var chk = $(this);
+                var id = chk.next().val();
+                if (chk.prop("checked")) {
+                    adminLeaveArray.push(id);
+                } else {
+                    if (deptArray.indexOf(id) > -1) {
+                        var i = deptArray.indexOf(id);
+                        adminLeaveArray.splice(i, 1);
+                    }
+                }
+            });
+            
+             var adminLoanArray = [];
+            $(document).on('click', '#deleteadminLoan', function () {
+//                $('#modalDel').modal('hide');
+//                $('#modalDel').removeClass('fade');
+                  $('.modal-backdrop').remove();
+                var url = "${pageContext.request.contextPath}/deleteadminLoan";
+                console.log("admin leave deletion going on");
+                var data = adminLoanArray.join(",");
+                console.log(data);
+                $.post(url, {array: data}, function (result) {
+                    if (result === "Successful") {
+                        console.log("Deletion was successful");
+                        alert("Deleted successfully");
+                        $('#main').html(spinner);
+                        var url = "adminloanmanagement";
+                        $.get(url, function (result) {
+                            $('#main').html(result);
+                        });
+                        console.log(result);
+                    }
+                });
+            });
+            
+              $(document).on('change', '.adminLoanBox', function () {
+                var chk = $(this);
+                var id = chk.next().val();
+                if (chk.prop("checked")) {
+                    adminLoanArray.push(id);
+                } else {
+                    if (deptArray.indexOf(id) > -1) {
+                        var i = deptArray.indexOf(id);
+                        adminLoanArray.splice(i, 1);
+                    }
+                }
+            });
+            
+            
             
             $(document).on('click', '#addadmin', function (e) {
                 console.log("I am inside addadmin");

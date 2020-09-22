@@ -68,7 +68,7 @@
 		<c:forEach var="loan" items="${loan}" varStatus="status">
                 <tr> 
                      <th>
-                        <input type="checkbox" class="adminBox">
+                        <input type="checkbox" class="adminLoanBox">
                         <input type="hidden" value="${loan.id}">
                     </th>
                     <th scope="row">${status.count + (page_num - 1)* 10}</th>
@@ -98,6 +98,21 @@
         </table>
                 <div class="col-md-12 my-3">${pagination}</div>
                     </div>
+                    
+<div class="modal fade" id="modalDel" tabindex="-1" role="dialog" data-backdrop="true" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+          <h5>Are you sure you want to delete this</h5>
+           <div id="deleteTest"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="deleteadminLoan" data-dismiss="modal">Yes</button>
+        <button type="button"  class="btn btn-danger btn-primary link" data-dismiss="modal" >No</button>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
 </div>
 

@@ -20,4 +20,6 @@ public interface ProjectTrackerManagementInterface {
     public List<ProjectTracker> getProjectReport(int usertypeid, String department, String limit);
     public List<ProjectTracker> searchReport(int usertypeid, String department, String search_by, String search_string, String limit);
     public int[] deleteReport(String array[]);
+    public List<Department> searchDept(String search_by, String search_string, String limit);
+    public int[] deleteDept(String array[]);
 }

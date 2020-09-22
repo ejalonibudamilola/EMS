@@ -32,7 +32,7 @@ public interface UserManagementInterface {
     public int addStaff(String lastname, String firstname, String username, String dept, String jobtitle, String password, String usertypeid);
     public int[] deleteStaff(String array[]);
     public List<Users> searchStaff(String department, String search_by, String search_string, String limit);
-     public List<Users> searchAdmin(String search_by, String search_string);
+     public List<Users> searchAdmin(String search_by, String search_string, String limit);
     public int editProfilePicture(String username, String newimagename);
     public int addAdmin(String adlastname, String adfirstname, String adusername, String addept, String jobtitle, String adpassword, String usertypeid);
     public List<Users> getAdmin(String limit);

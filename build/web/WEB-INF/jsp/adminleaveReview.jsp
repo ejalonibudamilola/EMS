@@ -26,16 +26,16 @@
                         </div>
                         <select class="custom-select" id="search_by" name="search_by">
                             <option selected="">Choose...</option> 
-                            <option value="lastname">Staff Lastname</option>
-                            <option value="firstname">Staff Firstname</option>
-                            <option value="department">Staff Department</option>
-                            <option value="jobtype">Staff Jobtype</option>
+                            <option value="lastname">Admin Lastname</option>
+                            <option value="firstname">Admin Firstname</option>
+                            <option value="department">Admin Department</option>
+                            <option value="jobtype">Admin Jobtype</option>
                             <option value="leave_request_date">Request Date</option>
                             <option value="leave_duration">Duration</option>
                             <option value="leave_start_date">StartDate</option>
                             <option value="leave_end_date">EndDate</option>
                             <option value="reason_for_leaverequest">Reason for Leave Request</option>
-                            <option value="username">Staff Username</option>
+                            <option value="username">Admin Username</option>
                             <option value="leave_status">Status</option>
                         </select>
                         <input type="text" class="form-control" placeholder="Enter search details" name="search_string" id="search_string">
@@ -53,16 +53,16 @@
                                 <tr>  
                                     <th></th>
                                     <th>S/N</th>                                    
-                                    <th>Staff Lastname</th>
-                                    <th>Staff Firstname</th>
-                                    <th>Staff Department</th>
+                                    <th>Admin Lastname</th>
+                                    <th>Admin Firstname</th>
+                                    <th>Admin Department</th>
                                     <th>JobType</th>
                                     <th>Request Date</th>
                                     <th>Duration</th>
                                     <th>StartDate</th>
                                     <th>EndDate</th>
                                     <th>Reason for Leave Request</th>
-                                    <th>Staff Username</th>
+                                    <th>Admin Username</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -71,8 +71,8 @@
 		<c:forEach var="leave" items="${leave}" varStatus="status">
                 <tr>
                      <th>
-                        <input type="checkbox" class="staffBox">
-                        <input type="hidden" value="${staffs.username}">
+                        <input type="checkbox" class="adminLeaveBox">
+                        <input type="hidden" value="${leave.id}">
                     </th>
                     <th scope="row">${status.count + (page_num - 1)* 10}</th>
                     <td>${leave.lastname}</td>
@@ -102,6 +102,20 @@
         </table>
                 <div class="col-md-12 my-3">${pagination}</div>
                     </div>
+<div class="modal fade" id="modalDel" tabindex="-1" role="dialog" data-backdrop="true" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+          <h5>Are you sure you want to delete this</h5>
+           <div id="deleteTest"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="deleteadminLeave" data-dismiss="modal">Yes</button>
+        <button type="button"  class="btn btn-danger btn-primary link" data-dismiss="modal" >No</button>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
 </div>
 

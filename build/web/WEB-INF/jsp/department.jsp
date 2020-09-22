@@ -26,16 +26,11 @@
                         </div>
                         <select class="custom-select" id="search_by" name="search_by">
                             <option selected="">Choose...</option> 
-                            <option value="lastname">Staff Lastname</option>
-                            <option value="firstname">Staff Firstname</option>                            
-                            <option value="department">Staff Department</option>
-                            <option value="username">Staff Username</option>
-                            <option value="jobtype">Staff Jobtype</option>
-                            <option value="job_title">Staff Jobtitle</option>
+                            <option value="deptname">Department</option>
                         </select>
                         <input type="text" class="form-control" placeholder="Enter search details" name="search_string" id="search_string">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-primary btn-sm" id="searchStaff" type="button">Search</button>
+                            <button class="btn btn-outline-primary btn-sm" id="searchDept" type="button">Search</button>
                         </div>
                     </div>
                 </form>
@@ -58,7 +53,7 @@
 		<c:forEach var="dept" items="${dept}" varStatus="status">
                 <tr> 
                     <th>
-                        <input type="checkbox" class="staffBox">
+                        <input type="checkbox" class="deptBox">
                         <input type="hidden" value="${dept.id}">
                     </th>
                     <th scope="row">${status.count + (page_num - 1)* 10}</th>
@@ -80,7 +75,7 @@
            <div id="deleteTest"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="spc btn btn-primary" id="deleteStaff" data-dismiss="modal">Yes</button>
+        <button type="button" class="spc btn btn-primary" id="deleteDept" data-dismiss="modal">Yes</button>
         <button type="button"  class="btn btn-danger btn-primary link" data-dismiss="modal" >No</button>
       </div>
     </div>

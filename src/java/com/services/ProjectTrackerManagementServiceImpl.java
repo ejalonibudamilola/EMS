@@ -118,9 +118,39 @@ public class ProjectTrackerManagementServiceImpl implements ProjectTrackerManage
         return getStaff;
     }
     
-         @Override
+    @Override
     public int[] deleteReport(String array[]){
         String sql = "DELETE FROM tbl_projecttracker WHERE id =";
+        String query[] = new String[array.length];
+        StringBuilder sb = new StringBuilder();
+        for (int i =0; i < array.length; i++) {
+            sb.append(sql).append("");
+//            sb.append("\"" + array[i] + "\"");
+            sb.append("'").append(array[i]).append("'");
+            query[i] = sb.toString();
+            System.out.println("sqllll:"+sb.toString());
+            sb.setLength(0);
+        }
+        System.out.println("query is "+Arrays.toString(query));
+        int [] result = jdbcTemplate.batchUpdate(query);
+
+        System.out.println("");
+
+        System.out.println("deleted:"+result.length);
+        return result;
+    }
+    
+    @Override
+    public List<Department> searchDept(String search_by, String search_string, String limit){
+        String sql = "SELECT * FROM tbl_department WHERE " + search_by + "  LIKE '%" + search_string + "%' "+limit;
+        List<Department> getDept = jdbcTemplate.query(sql, new deptMapper());
+         System.out.println("sql for searched dept is "+sql);
+        return getDept;
+    }
+    
+    @Override
+    public int[] deleteDept(String array[]){
+        String sql = "DELETE FROM tbl_department WHERE id =";
         String query[] = new String[array.length];
         StringBuilder sb = new StringBuilder();
         for (int i =0; i < array.length; i++) {

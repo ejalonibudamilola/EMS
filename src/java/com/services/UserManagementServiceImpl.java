@@ -414,10 +414,11 @@ public class UserManagementServiceImpl implements UserManagementInterface {
     }
     
      @Override
-    public List<Users> searchAdmin(String search_by, String search_string){
-        String sql = "SELECT a.id, a.lastname, a.firstname, a.job_title, a.department, a.jobtype, a.username FROM tbl_userprofile a, "
-               + "tbl_usertype_mappings b WHERE a.username = b.username AND b.usertypeid = 3 AND  a." + search_by + "  LIKE '%" + search_string + "%' ";
-        List<Users> getStaff = jdbcTemplate.query(sql, new staffMapper());
+    public List<Users> searchAdmin(String search_by, String search_string, String limit){
+        String sql = "SELECT a.id, a.lastname, a.firstname, a.job_title, a.department, a.jobtype, a.username FROM "
+                + "tbl_userprofile a, tbl_usertype_mappings b WHERE a.username = b.username AND b.usertypeid = 3 AND "
+                + " a." + search_by + "  LIKE '%" + search_string + "%' "+limit;
+        List<Users> getStaff = jdbcTemplate.query(sql, new adminMapper());
          System.out.println("sql for searched admin is "+sql);
         return getStaff;
     }
